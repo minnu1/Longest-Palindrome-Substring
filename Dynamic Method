@@ -1,0 +1,53 @@
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class dp1 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String a=sc.next();
+		System.out.println(a);
+		int n=a.length(); 
+		Boolean table[][]=new Boolean[n][n];
+		int maxlength=1,start=0;
+		for(int i=0;i<n;i++)
+		Arrays.fill(table[i], false);
+		// for length 1
+		for(int i=0;i<n;i++)
+			table[i][i]=true;
+		//for length 2
+		for(int i=0;i<n-1;i++)
+		{
+			if(a.charAt(i)==a.charAt(i+1))
+			{
+				table[i][i+1]=true;
+				maxlength=2;start=i;
+			}
+			
+		}
+		
+		//for lenght k (k>=3)
+		
+		for (int k=3;k<=n;k++)
+		{
+			for(int i=0;i<n-k+1;i++)
+			{
+				int j=i+k-1;
+				if(table[i+1][j-1] && a.charAt(i)==a.charAt(j))
+				{
+					table[i][j]=true;
+					if(k>maxlength)
+					{
+						maxlength=k;
+						start=i;
+					}
+				}
+			}
+		}
+		
+		System.out.println(maxlength);
+		
+		
+	}
+
+}
