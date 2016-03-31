@@ -1,14 +1,14 @@
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+//Using dynamic programming 
 public class dp1 {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		String a=sc.next();
 		System.out.println(a);
 		int n=a.length(); 
-		Boolean table[][]=new Boolean[n][n];
+		Boolean table[][]=new Boolean[n][n];//Creating matrix
 		int maxlength=1,start=0;
 		for(int i=0;i<n;i++)
 		Arrays.fill(table[i], false);
